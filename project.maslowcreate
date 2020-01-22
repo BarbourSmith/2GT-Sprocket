@@ -6,9 +6,22 @@
             "x": 0,
             "y": 0,
             "uniqueID": 869568,
-            "ioValues": [],
+            "ioValues": [
+                {
+                    "name": "Number of teeth",
+                    "ioValue": 10
+                }
+            ],
             "topLevel": true,
             "allAtoms": [
+                {
+                    "atomType": "Input",
+                    "name": "Number of teeth",
+                    "x": 30,
+                    "y": 84,
+                    "uniqueID": 185465,
+                    "ioValues": []
+                },
                 {
                     "atomType": "Output",
                     "name": "Output",
