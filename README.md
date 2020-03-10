@@ -4,6 +4,3 @@
 
 ![](/project.svg)
 
-## 2GT Sprocket
-
-
