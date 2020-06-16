@@ -7,7 +7,7 @@
     "ioValues": [
         {
             "name": "Number of teeth",
-            "ioValue": 10
+            "ioValue": 200
         },
         {
             "name": "Resolution",
@@ -25,6 +25,23 @@
             "ioValues": []
         },
         {
+            "atomType": "Rectangle",
+            "name": "Rectangle",
+            "x": 0.6163982430453879,
+            "y": 0.2886178861788618,
+            "uniqueID": 444327,
+            "ioValues": [
+                {
+                    "name": "x length",
+                    "ioValue": 10
+                },
+                {
+                    "name": "y length",
+                    "ioValue": 10
+                }
+            ]
+        },
+        {
             "atomType": "Code",
             "name": "Code",
             "x": 0.48761149653121905,
@@ -33,7 +50,7 @@
             "ioValues": [
                 {
                     "name": "NumberOfTeeth",
-                    "ioValue": 10
+                    "ioValue": 200
                 },
                 {
                     "name": "Resolution",
@@ -49,6 +66,31 @@
             "y": 0.7892720306513409,
             "uniqueID": 448894,
             "ioValues": []
+        },
+        {
+            "atomType": "Translate",
+            "name": "Translate",
+            "x": 0.6573938506588579,
+            "y": 0.7560975609756098,
+            "uniqueID": 847508,
+            "ioValues": [
+                {
+                    "name": "geometry",
+                    "ioValue": ""
+                },
+                {
+                    "name": "xDist",
+                    "ioValue": 0
+                },
+                {
+                    "name": "yDist",
+                    "ioValue": 0
+                },
+                {
+                    "name": "zDist",
+                    "ioValue": 0
+                }
+            ]
         },
         {
             "atomType": "Output",
