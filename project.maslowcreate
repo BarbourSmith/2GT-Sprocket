@@ -43,54 +43,12 @@
             "code": "function main(NumberOfTeeth, Resolution){\n  return gear(2, parseInt(NumberOfTeeth), parseFloat(Resolution), GT2Tooth);\n}\n\n\n//You can learn more about all of the available methods at https://jsxcad.js.org/app/UserGuide.html \n\n\n//A support function to generate arcs\nfunction arc(x, xOffset, yOffset, radius, sign){\n    if(sign){\n        return yOffset + Math.sqrt(Math.pow(radius, 2) - Math.pow(x - xOffset, 2));\n    }\n    else{\n        return yOffset - Math.sqrt(Math.pow(radius, 2) - Math.pow(x - xOffset, 2));\n    }\n}\n\n//The actual tooth profile\nfunction GT2Tooth(i){\n    \n    //Transition points between sections\n    const T1 = .3;\n    const T2 = .41;\n    const T3 = .48;\n    const TLD = .254;\n    \n    //The little fillet arc on the left\n    if(i>=T1 && i < T2){\n        return arc(i, .26, -.15, .15, true) - TLD;\n    }\n    //The transition arc on the left\n    else if(i>=T2 && i<T3){\n        return arc(i, 1.4, 0, 1, false) - TLD;\n    }\n    //The big arc in the middle\n    else if(i >= T3 && i < 1+(1-T3)){\n        return arc(i, 1, -.2, .555, false) - TLD;\n    }\n    //The transition arc on the right\n    else if(i>= 1+(1-T3) && i<1+(1-T2)){\n        return arc(i, .6, 0, 1, false) - TLD;\n    }\n    //The little fillet arc on the right\n    else if(i>=1+(1-T2) && i < 1+(1-T1)){\n        return arc(i, 1.74, -.15, .15, true) - TLD;\n    }\n    //The flat parts on either side\n    else{\n        return 0 - TLD;\n    }\n}\n\n\n//distanceToAngle take a distance and converts it to an angle for a circle of\n//the passed circumference\nfunction distanceToAngle(distance, C){\n    return 360*(distance/C);\n}\n\n\n//Gear is a function which takes arguments tooth spacing, number of teeth and \n//tooth. Tooth spacing is the length of each tooth, number of teeth is the number \n//of teeth in the gear, and tooth is a tooth profile function.\nfunction gear(toothSpacing, numberOfTeeth, stepSize, toothProfile){\n    \n    //Compute the Circumference of the sprocket and the radius of the sprocket\n    const C = toothSpacing*numberOfTeeth;\n    const R = C / (Math.PI*2);\n    \n    \n    console.log(\"C: \" + C);\n    console.log(\"R: \" + R);\n    \n    points = [];\n    var radiusNow = R;\n    \n    var distance = 0;\n    while(distance < C){\n       //Compute the radius at this point\n       radiusNow = R + toothProfile(distance%toothSpacing);\n       \n       //Generate the circle\n       points.push([radiusNow*cos(distanceToAngle(distance, C)), radiusNow*sin(distanceToAngle(distance, C)), 0]);\n       distance = distance + stepSize;\n    }\n    \n    return Shape.fromOpenPath(points).close().interior();\n}\n\n\n\n\nreturn main(NumberOfTeeth, Resolution)"
         },
         {
-            "atomType": "Rectangle",
-            "name": "Rectangle",
-            "x": 0.6163982430453879,
-            "y": 0.2886178861788618,
-            "uniqueID": 444327,
-            "ioValues": [
-                {
-                    "name": "x length",
-                    "ioValue": 10
-                },
-                {
-                    "name": "y length",
-                    "ioValue": 10
-                }
-            ]
-        },
-        {
             "atomType": "Input",
             "name": "Resolution",
             "x": 0.027086383601756955,
             "y": 0.7892720306513409,
             "uniqueID": 448894,
             "ioValues": []
-        },
-        {
-            "atomType": "Translate",
-            "name": "Translate",
-            "x": 0.5600292825768667,
-            "y": 0.8122605363984674,
-            "uniqueID": 531946,
-            "ioValues": [
-                {
-                    "name": "geometry",
-                    "ioValue": ""
-                },
-                {
-                    "name": "xDist",
-                    "ioValue": 0
-                },
-                {
-                    "name": "yDist",
-                    "ioValue": 0
-                },
-                {
-                    "name": "zDist",
-                    "ioValue": 0
-                }
-            ]
         },
         {
             "atomType": "Output",
